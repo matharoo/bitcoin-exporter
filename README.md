@@ -1,5 +1,11 @@
 # bitcoin-exporter
 
+## Building dockerfile and creating the image
+```
+docker build -t bitcoin-exporter:1.0.0 .
+# now you should have an image bitcoin-exporter with tag 1.0.0
+```
+
 ## Deploying deployment.yaml
 ```
 kubectl create ns wix
