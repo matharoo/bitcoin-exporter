@@ -1,0 +1,25 @@
+server:
+  ingress:
+    enabled: true
+    hosts:
+      - localhost
+    paths:
+      - /
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+      kubernetes.io/ingress.class: nginx
+  service:
+    port: 80
+serverFiles:
+  prometheus.yml:
+    scrape_configs:
+      - job_name: bitcoin-exporter
+        metrics_path: /
+        static_configs:
+          - targets:
+            - bitcoin-exporter.wix.svc.cluster.local:8000
+      - job_name: node-exporter
+        metrics_path: /metrics
+        static_configs:
+          - targets:
+            - prometheus-prometheus-node-exporter.wix.svc.cluster.local:9100
