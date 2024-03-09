@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bitcoin-exporter
+  namespace: wix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bitcoin-exporter
+  template:
+    metadata:
+      labels:
+        app: bitcoin-exporter
+    spec:
+      containers:
+      - name: bitcoin-exporter
+        image: bitcoin-exporter:1.0.0
+        ports:
+        - containerPort: 8000
+
